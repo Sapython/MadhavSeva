@@ -1,0 +1,25 @@
+<nav>
+    <div class="logo">
+        <img src="assets/logo.png" alt="Madhavseva">
+        <p>International Society for Krishna Consciousness</p>
+    </div>
+    <ul>
+        <li routerLinkActive="active" routerLink="home">Home</li>
+        <li routerLinkActive="active" routerLink="contact">Contact Us</li>
+        <li routerLinkActive="active" routerLink="events">Events</li>
+        <li routerLinkActive="active" routerLink="login" class="login">Login</li>
+    </ul>
+    <button mat-icon-button (click)="sidebarVisible=!sidebarVisible"><mat-icon>menu</mat-icon></button>
+</nav>
+<div class="overlay" (click)="sidebarVisible=!sidebarVisible" *ngIf="sidebarVisible"></div>
+<aside [style]="'transform: translateX('+(sidebarVisible ? '-100' : '0')+'%)'">
+    <div class="header">
+        Menu
+    </div>
+    <ul>
+        <li routerLinkActive="active" routerLink="home">Home</li>
+        <li routerLinkActive="active" routerLink="contact">Contact Us</li>
+        <li routerLinkActive="active" routerLink="events">Events</li>
+        <li routerLinkActive="active" routerLink="login" class="login">Login</li>
+    </ul>
+</aside>

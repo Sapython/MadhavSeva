@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 2.5em 1em;
+    background-color: #fff6e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    iframe {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 800px;
+        width: 90vw;
+        height: calc(90vw/1.333);
+        max-height: 600px;
+    }
+
+    img {
+        width: 80%;
+        min-width: 280px;
+        max-width: 800px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    p{
+        text-align: center;
+        font-size: 1.2em;
+        margin: 1em 0;
+        color:var(--secondary-color);
+    }
+}

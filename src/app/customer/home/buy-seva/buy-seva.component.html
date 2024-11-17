@@ -1,0 +1,60 @@
+<section>
+  <div class="header">
+    <h1>BOOK SEVA</h1>
+    <button mat-icon-button (click)="close.emit()"><mat-icon>close</mat-icon></button>
+  </div>
+  <main>
+    <div class="decoration">
+        <img src="assets/Union.png" alt="">
+        <div class="seva">
+            <img src="assets/candlestick.svg" alt="Candle stick" />
+            <h2>You Are Booking {{ seva.name | titlecase}}</h2>
+        </div>
+        <img src="assets/Union(1).png" alt="">
+    </div>
+    <form [formGroup]="bookSevaForm" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Sevak Name</mat-label>
+        <input formControlName="sevakName" type="text" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input type="number" matInput formControlName="sevakPhone" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Date</mat-label>
+        <input matInput formControlName="sevaDate" [matDatepicker]="picker" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="gift" #gifted color="primary">For Somone Else</mat-slide-toggle>
+      <mat-form-field appearance="outline" *ngIf="gifted.checked">
+        <mat-label>Gifted Sevak Name</mat-label>
+        <input formControlName="giftedPerson" type="text" matInput />
+      </mat-form-field>
+      <hr>
+      <mat-slide-toggle *ngIf="seva.subscriptionPlanId!='noSub'" formControlName="monthlySeva" color="primary">Monthly Seva</mat-slide-toggle>
+      <p>Payment Mode</p>
+      <mat-radio-group formControlName="mode" color="primary" aria-label="Select an option">
+        <mat-radio-button value="online">Online</mat-radio-button>
+        <mat-radio-button #offline value="offline">Offline</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <mat-form-field appearance="outline" *ngIf="offline.checked">
+        <mat-label>Choose Recipent</mat-label>
+        <mat-select formControlName="recipent">
+          <mat-option *ngFor="let recipent of recipents" [value]="recipent">
+            {{recipent.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="row">
+        <button mat-stroked-button color="primary" (click)="close.emit()">Cancel</button>
+        <button mat-flat-button color="primary" type="submit">Book</button>
+      </div>
+    </form>
+  </main>
+</section>

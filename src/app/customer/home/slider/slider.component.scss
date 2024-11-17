@@ -1,0 +1,54 @@
+// fadeIn aniamtion
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.frame{
+    width: calc(100vw - 80px);
+    height: calc(100vh - 150px);
+    padding:40px;
+    background: var(--tertiary-color);
+    .slider{
+        width: 100%;
+        img{
+            width: calc(100vw - 80px);
+            height: calc(100vh - 150px);
+            object-fit: cover;
+            object-position: center;
+            border-radius: 20px;
+            animation: fadeIn 1s;
+        }
+    }
+    .actions{
+        width: calc(100vw - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
+        button{
+            background: white;
+            transform: translateY(-100%);
+            color:var(--primary-color)
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .frame{
+        width: 100vw;
+        height: calc(100vh - 110px);
+        padding:20px;
+        .slider{
+            img{
+                width: calc(100vw - 40px);
+                height: calc(100vh - 110px);
+            }
+        }
+    }
+}

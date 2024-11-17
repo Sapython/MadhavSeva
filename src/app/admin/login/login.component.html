@@ -1,0 +1,18 @@
+<div class="main-container">
+    <div class="left-container">
+        <div class="container">
+            <h2 class="login-txt">Login</h2>
+            <form  class="form-container" (ngSubmit)="login()" [formGroup]="loginForm">
+                <div class="input-container">
+                    <input formControlName="email" type="email" name="email" class="input" placeholder="Email address">
+                    <img src="assets/Images/Vector.jpg" alt="" class="input-icon">
+                </div>
+                <div class="input-container">
+                    <input formControlName="password" type="password" name="password" class="input" placeholder="Password">
+                    <img src="assets/Images/ic_baseline-person.jpg" alt="" class="input-icon">
+                </div>
+                <input type="submit" value="Login" class="submit-btn">
+            </form>
+        </div>
+    </div>
+</div>

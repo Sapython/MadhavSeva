@@ -1,0 +1,37 @@
+<div class="mainSection">
+    <section *ngIf="!visibleOnMobile">
+        <aside>
+            <h1>Admin Panel</h1>
+            <hr>
+            <li routerLinkActive="active" routerLink="offline">Offline</li>
+            <li routerLinkActive="active" routerLink="online">Online</li>
+            <li routerLinkActive="active" routerLink="gitaBooking">Gitamritam</li>
+        </aside>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </section>
+    <nav *ngIf="visibleOnMobile">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Madhavseva">
+        </div>
+        <ul>
+            <<li routerLinkActive="active" routerLink="offline">Offline</li>
+            <li routerLinkActive="active" routerLink="online">Online</li>
+            <li routerLinkActive="active" routerLink="gitaBooking">Gitamritam</li>
+        </ul>
+        <button mat-icon-button (click)="sidebarVisible=!sidebarVisible"><mat-icon>menu</mat-icon></button>
+    </nav>
+    <router-outlet *ngIf="visibleOnMobile"></router-outlet>
+    <div class="overlay" (click)="sidebarVisible=!sidebarVisible" *ngIf="sidebarVisible"></div>
+    <aside [style]="'transform: translateX('+(sidebarVisible ? '-100' : '0')+'%)'">
+        <div class="header">
+            Menu
+        </div>
+        <ul>
+            <li routerLinkActive="active" routerLink="offline">Offline</li>
+            <li routerLinkActive="active" routerLink="online">Online</li>
+            <li routerLinkActive="active" routerLink="gitaBooking">Gitamritam</li>
+        </ul>
+    </aside>
+</div>

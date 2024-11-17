@@ -1,0 +1,18 @@
+section{
+    width: 100vw;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #823e3e;
+    background-image: url('/assets/pattern-chakras-white.png');
+    background-repeat: repeat;
+    background-size: 200px !important;
+    background-size: 100px;
+    p{
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: 'Julius Sans One', sans-serif;
+    }
+}

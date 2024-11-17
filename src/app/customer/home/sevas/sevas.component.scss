@@ -1,0 +1,97 @@
+.sevas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h2 {
+        text-align: center;
+        margin-bottom: 1em;
+        font-family: 'Julius Sans One', sans-serif;
+        margin-bottom: 10px;
+        color:var(--primary-color);
+        font-size:30px;
+    }
+    
+    img.caret {
+        width: 250px;
+    }
+    
+    .sevasGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        background: white;
+        padding: 10px;
+        border: 5px solid #FB9F14;
+        border-radius: 15px;
+        width: 90vw;
+        min-height: 20vh;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.13);
+        margin: 40px 0px;
+        .seva {
+            width: 310px;
+            transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+
+            img {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+
+            .detail {
+                background: #FFBA53;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                padding: 20px;
+
+                p {
+                    margin: 0px;
+                    font-family: 'Quicksand', sans-serif;
+                    font-weight: 700;
+                    color: white;
+                    font-size: 20px;
+                    text-align: center;
+                }
+            }
+
+            border-radius: 20px;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.13);
+        }
+
+        .seva:hover {
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.13);
+            transform: scale(1.05);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sevas {
+        .sevasGrid {
+            justify-content: space-between;
+            .seva{
+                width:150px;
+                height:auto;
+                border-radius: 10px;
+                img{
+                    width: 150px;
+                    object-fit: contain;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+                .detail {
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    padding: 10px;
+                    p {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

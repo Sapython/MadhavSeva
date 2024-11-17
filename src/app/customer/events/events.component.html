@@ -1,0 +1,25 @@
+<!-- <app-header></app-header> -->
+<section>
+  <img src="assets/events.jpeg" alt="Discover Yourself Event Banner" />
+  <p>
+    Sri Sri Radha Venimadhav Mandir <br />
+    A/161, Kashiraj Nagar, Baluaghat, Prayagraj - 211003 <br />
+    Contact - 7800077046, 9026296062
+  </p>
+  <!-- <p>इस्कॉन के सदस्यों के लिए (माधव सेवा, नित्य सेवा, आजीवन सदस्य, ग्रहस्थ या युवा कार्यक्रम, इस्कॉन मंदिर में सेवा कर रहे हैं)</p>
+  <a href="https://forms.gle/Xquz9q7WZ6MtbWKH9">
+    <button color="primary" mat-raised-button>Book Now</button>
+  </a>
+  <hr>
+  <p>नए भक्तों के लिए</p>
+  <a href="https://rzp.io/l/Yzg3UJn">
+    <button color="primary" mat-raised-button>Book Now</button>
+  </a> -->
+  <mat-radio-group color="primary" [(ngModel)]="data" [ngModelOptions]="{standalone:true}">
+    <mat-radio-button color="primary" value="https://forms.gle/Xquz9q7WZ6MtbWKH9">इस्कॉन के सदस्यों के लिए (माधव सेवा, नित्य सेवा, आजीवन सदस्य, ग्रहस्थ या युवा कार्यक्रम, इस्कॉन मंदिर में सेवा कर रहे हैं) <strong>(नि: शुल्क)</strong></mat-radio-button>
+    <br>
+    <mat-radio-button color="primary" value="https://rzp.io/l/Yzg3UJn">नए भक्तों के लिए <strong>(मात्र (100) रुपये)</strong></mat-radio-button>
+  </mat-radio-group>
+  <button color="primary" (click)="continue()" mat-raised-button>Continue Booking</button>
+  <!-- <button color="primary" (click)="openBookingDialog()" mat-raised-button>Continue Booking</button> -->
+</section>

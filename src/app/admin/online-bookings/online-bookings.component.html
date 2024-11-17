@@ -1,0 +1,46 @@
+<section>
+  <button mat-flat-button color="primary">
+    Refresh <mat-icon>refresh</mat-icon>
+  </button>
+  <table *ngIf="desktopView">
+    <thead>
+      <tr>
+        <th>Seva</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Booking Date</th>
+        <th>Seva Date</th>
+        <th>Sevak</th>
+        <th>Sevak Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.seva.name }}</td>
+        <td>{{ booking.mode }}</td>
+        <td>{{ booking.seva.price }}</td>
+        <td>{{ booking.sevaDate.toDate() | date }}</td>
+        <td>{{ booking.date.toDate() | date }}</td>
+        <td>{{ booking.sevakName }}</td>
+        <td>{{ booking.sevakPhone }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- mat Card layout for mobile -->
+  <ng-container *ngIf="!desktopView">
+    <mat-card  *ngFor="let booking of bookings">
+      <mat-card-header>
+        <mat-card-title>{{ booking.seva.name }}</mat-card-title>
+        <mat-card-subtitle>{{ booking.mode }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Price: {{ booking.seva.price }}</p>
+        <p>Booking Date: {{ booking.sevaDate.toDate() | date }}</p>
+        <p>Seva Date: {{ booking.date.toDate() | date }}</p>
+        <p>Sevak: {{ booking.sevakName }}</p>
+        <p>Sevak Number: {{ booking.sevakPhone }}</p>
+      </mat-card-content>
+    </mat-card>
+    <h4 *ngIf="bookings.length == 0">No Bookings Found</h4>
+  </ng-container>
+</section>

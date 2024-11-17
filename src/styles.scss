@@ -1,0 +1,113 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MadhavSeva-primary: mat.define-palette(mat.$indigo-palette);
+$MadhavSeva-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$MadhavSeva-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$MadhavSeva-theme: mat.define-light-theme((color: (primary: $MadhavSeva-primary,
+        accent: $MadhavSeva-accent,
+        warn: $MadhavSeva-warn,
+      )));
+$ssspay-palette: (
+  50: #fff5ed,
+  100: #fff0e4,
+  200: #ffe5d1,
+  300: #ffd9b9,
+  400:#ffca9f,
+  500:#ffb273,
+  600:#ff9a47,
+  700:#ff8d2f,
+  800:#ff821b,
+  900:#ff7809,
+  contrast: (50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+$my-primary: mat.define-palette($ssspay-palette, 700);
+$my-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((color: (primary: $my-primary,
+        accent:$my-accent,
+        foreground: $ssspay-palette,
+      )));
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.tabs-theme($my-theme);
+@include mat.input-theme($my-theme);
+@include mat.form-field-theme($my-theme);
+@include mat.progress-spinner-theme($my-theme);
+@include mat.checkbox-color($my-theme);
+@include mat.datepicker-theme($my-theme);
+@include mat.chips-theme($my-theme);
+@include mat.legacy-chips-color($my-theme);
+@include mat.legacy-chips-theme($my-theme);
+@include mat.chips-color($my-theme);
+@include mat.all-component-themes($my-theme);
+
+// Include theme styles for core and each component used in your app.
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  --background-color: #fff3df;
+  --background-color-rgb: 255, 243, 223;
+  --primary-color: #f8b34b;
+  --primary-color-rgb: 248, 179, 75;
+  --secondary-color: #ff9900;
+  --secondary-color-rgb: 255, 153, 0;
+  --tertiary-color: #ffca7b;
+  --tertiary-color-rgb: 255, 202, 123;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background-color);
+  overflow-x: hidden;
+    background-image: url('/assets/pattern-chakras-white.png');
+    background-repeat: repeat;
+    background-size: 200px !important;
+    background-size: 100px;
+}
+.cdk-overlay-backdrop{
+  backdrop-filter: blur(5px);
+}

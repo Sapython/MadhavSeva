@@ -1,0 +1,137 @@
+<section>
+    <button (click)="ngOnInit()" mat-flat-button color="primary">
+      <mat-icon>refresh</mat-icon> Refresh
+    </button>
+    <button (click)="exportBookings()" mat-flat-button color="primary">
+      <mat-icon>system_update_alt</mat-icon> Export
+    </button>
+    <div class="analytics">
+      <p>Total Bookings: {{bookings.length}}</p>
+      <p>Total Online: {{onlineBookings}}</p>
+      <p>Total Offline: {{offlineBookings}}</p>
+    </div>
+    <table *ngIf="tableView">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Booking Date</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>DOB</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.mode }}</td>
+          <td>{{ booking.date.toDate() | date:'short' }}</td>
+          <td>{{ booking.sevakName }}</td>
+          <td>{{ booking.sevakPhone }}</td>
+          <td>{{ booking.email }}</td>
+          <td>{{ booking.dateOfBirth.toDate() | date }}</td>
+          <td>{{ booking.address }}</td>
+          <td>{{ booking.city }}</td>
+          <td>
+            <button (click)="approve(booking)" mat-flat-button color="primary">
+              <ng-container *ngIf="booking.mode=='online'">
+                <p *ngIf="booking.orderDetail?.stage == 'paymentCaptureSuccess' || booking.approved">
+                  Reject
+                </p>
+                <p *ngIf="booking.orderDetail?.stage != 'paymentCaptureSuccess' && !booking.approved">
+                  Approve
+                </p>
+              </ng-container>
+              <ng-container *ngIf="booking.mode=='offline'">
+                <p *ngIf="booking.approved">
+                  Reject
+                </p>
+                <p *ngIf="!booking.approved">
+                  Approve
+                </p>
+              </ng-container>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- card view -->
+    <ng-container *ngIf="!tableView">
+      <h1>Bookings</h1>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let booking of bookings">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ booking.sevakName }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ booking.date.toDate() | date:'short' }} &nbsp; &nbsp; &nbsp; &nbsp;<mat-chip-listbox><mat-chip-option color="accent">{{ booking.mode }}</mat-chip-option></mat-chip-listbox>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list class="data">
+            <div>
+              <h4>Sevak Name</h4>
+              <strong>{{ booking.sevakName }}</strong>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <strong>{{ booking.sevakPhone }}</strong>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <strong>{{ booking.email }}</strong>
+            </div>
+            <div>
+              <h4>Date of Birth</h4>
+              <strong>{{ booking.dateOfBirth.toDate() | date }}</strong>
+            </div>
+            <div>
+              <h4>Address</h4>
+              <strong>{{ booking.address }}</strong>
+            </div>
+            <div>
+              <h4>City</h4>
+              <strong>{{ booking.city }}</strong>
+            </div>
+            <div>
+              <h4>Booking Date</h4>
+              <strong>{{ booking.date.toDate() | date:'short' }}</strong>
+            </div>
+            <div>
+              <h4>Amount</h4>
+              <strong>{{ booking.amount }}</strong>
+            </div>
+            <div>
+              <h4>Payment Mode</h4>
+              <strong>{{ booking.mode }}</strong>
+            </div>
+            <!-- actions -->
+            <div>
+              <h4 matLine>Action</h4>
+              <button (click)="approve(booking)" mat-flat-button color="primary">
+                <ng-container *ngIf="booking.mode=='online'">
+                  <p *ngIf="booking.orderDetail?.stage == 'paymentCaptureSuccess' || booking.approved">
+                    Reject
+                  </p>
+                  <p *ngIf="booking.orderDetail?.stage != 'paymentCaptureSuccess' && !booking.approved">
+                    Approve
+                  </p>
+                </ng-container>
+                <ng-container *ngIf="booking.mode=='offline'">
+                  <p *ngIf="booking.approved">
+                    Reject
+                  </p>
+                  <p *ngIf="!booking.approved">
+                    Approve
+                  </p>
+                </ng-container>
+              </button>
+            </div>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+</section>
+  

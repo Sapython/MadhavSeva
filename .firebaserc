@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iskcon-7feba": {
+      "hosting": {
+        "MadhavSeva": [
+          "iskcon-7feba"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iskcon-7feba"
+  }
+}

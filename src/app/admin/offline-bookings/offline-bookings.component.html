@@ -1,0 +1,41 @@
+<section>
+  <button (click)="ngOnInit()" mat-flat-button color="primary">
+    Refresh <mat-icon>refresh</mat-icon>
+  </button>
+  <table>
+    <thead>
+      <tr>
+        <th>Seva</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Booking Date</th>
+        <th>Seva Date</th>
+        <th>Sevak</th>
+        <th>Sevak Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.seva.name }}</td>
+        <td>{{ booking.mode }}</td>
+        <td>{{ booking.seva.price }}</td>
+        <td>{{ booking.sevaDate.toDate() | date }}</td>
+        <td>{{ booking.date.toDate() | date }}</td>
+        <td>{{ booking.sevakName }}</td>
+        <td>{{ booking.sevakPhone }}</td>
+        <td>
+          <button (click)="approve(booking)" mat-flat-button color="primary">
+            <p *ngIf="booking.approved">
+              Reject
+            </p>
+            <p *ngIf="!booking.approved">
+              Approve
+            </p>
+            <mat-icon>check</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

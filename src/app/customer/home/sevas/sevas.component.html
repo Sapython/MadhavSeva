@@ -1,0 +1,13 @@
+<div class="sevas">
+  <h2>SEVAS</h2>
+  <img class="caret" src="assets/Vector.svg" alt="stick" />
+  <div class="sevasGrid">
+    <div class="seva" (click)="buySeva(seva)" *ngFor="let seva of sevas">
+      <img [src]="seva.image" />
+      <div class="detail">
+        <p class="name">{{ seva.name }}</p>
+        <p class="price">₹{{ seva.price }}/-</p>
+      </div>
+    </div>
+  </div>
+</div>
